@@ -9,5 +9,6 @@
 
 ### информация
 
-- философия React - https://ru.reactjs.org/docs/thinking-in-react.html
+- философия React - https://ru.reactjs.org/docs/thinking-in-react.html  
+  так же тут можно читать пункты 2,3,4,6,8,10
 - пример работы с map(для отображения данных массива) во втором уроке
