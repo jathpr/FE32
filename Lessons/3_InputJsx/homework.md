@@ -10,3 +10,4 @@
 ### информация
 
 - философия React - https://ru.reactjs.org/docs/thinking-in-react.html
+- пример работы с map(для отображения данных массива) во втором уроке
