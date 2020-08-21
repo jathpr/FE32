@@ -4,8 +4,6 @@ export const Input = ({ setData }) => {
 	const [value, setValue] = useState('')
 
 	const handleClick = (e) => {
-		// setData(value)
-		// e.preventDefault();
 		setData(value)
 		setValue('')
 	}
@@ -13,7 +11,7 @@ export const Input = ({ setData }) => {
 	return (
 		<>
 			<input value={value} onChange={(e) => setValue(e.target.value)} />
-			<button onClick={handleClick}>Set</button>
+			<button onClick={handleClick}>Add user</button>
 		</>
 	)
 }

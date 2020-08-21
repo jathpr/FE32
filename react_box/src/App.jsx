@@ -1,74 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import { Input } from './Components/Input'
+import { getUsers, updateData, deleteData, sendData } from './server/requests'
+import { User } from './Components/User'
 
 export const App = () => {
 	const [users, setUsers] = useState([])
 
-	const getUsers = async () => {
-		const usersResp = await fetch('http://localhost:3004/users')
-		const users = await usersResp.json()
-		setUsers(users)
-	}
-
 	useEffect(() => {
-		getUsers()
+		getUsers().then((users) => setUsers(users))
 	}, [])
 
-	const sendData = async (name) => {
-		const url = 'http://localhost:3004/users'
-		try {
-			const response = await fetch(url, {
-				method: 'POST',
-				body: JSON.stringify({ name }),
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			})
-			const json = await response.json()
-			setUsers([...users, json])
-		} catch (error) {
-			console.error('Ошибка:', error)
-		}
+	const handleAdd = async (text) => {
+		const newUser = await sendData(text)
+		setUsers([...users, newUser])
 	}
 
-	const updateData = async (name) => {
-		const url = 'http://localhost:3004/users/1'
-		try {
-			const response = await fetch(url, {
-				method: 'PUT',
-				body: JSON.stringify({ ...users[1], name }),
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			})
-			const json = await response.json()
-			setUsers([...users, json])
-		} catch (error) {
-			console.error('Ошибка:', error)
-		}
+	const handleUpdate = async (id, text) => {
+		await updateData(id, text)
+		getUsers().then((users) => setUsers(users))
 	}
 
-	const deleteData = async (name) => {
-		const url = 'http://localhost:3004/users/1'
-		try {
-			const response = await fetch(url, {
-				method: 'DELETE',
-			})
-			const json = await response.json()
-		} catch (error) {
-			console.error('Ошибка:', error)
-		}
+	const handleDelete = async (id) => {
+		await deleteData(id)
+		getUsers().then((users) => setUsers(users))
 	}
 
 	return (
 		<>
-			{/* <Input setData={updateData} />
-			<div key={users.name[0]}>{users.name[0]}</div>
-			<div key={users.name[1]}>{users.name[1]}</div> */}
-			{users.map(({ name }) => (
-				<div key={name}>{name}</div>
+			<Input setData={handleAdd} />
+			{users.map((user) => (
+				<User
+					key={user.id}
+					name={user.name}
+					updateUser={(name) => handleUpdate(user.id, name)}
+					deleteUser={() => handleDelete(user.id)}
+				/>
 			))}
-			<button onClick={deleteData}>Delete 1</button>
 		</>
 	)
 }
