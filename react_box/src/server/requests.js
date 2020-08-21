@@ -1,14 +1,15 @@
+const SERVER = 'http://localhost:3004/users'
+
 export const getUsers = async () => {
-	const usersResp = await fetch('http://localhost:3004/users')
+	const usersResp = await fetch(SERVER)
 	const users = await usersResp.json()
 
 	return users
 }
 
 export const sendData = async (name) => {
-	const url = 'http://localhost:3004/users'
 	try {
-		const response = await fetch(url, {
+		const response = await fetch(SERVER, {
 			method: 'POST',
 			body: JSON.stringify({ name }),
 			headers: {
@@ -24,7 +25,7 @@ export const sendData = async (name) => {
 }
 
 export const updateData = async (id, name) => {
-	const url = `http://localhost:3004/users/${id}`
+	const url = `${SERVER}/${id}`
 	try {
 		const response = await fetch(url, {
 			method: 'PUT',
@@ -42,7 +43,7 @@ export const updateData = async (id, name) => {
 }
 
 export const deleteData = async (id) => {
-	const url = `http://localhost:3004/users/${id}`
+	const url = `${SERVER}/${id}`
 	try {
 		const response = await fetch(url, {
 			method: 'DELETE',

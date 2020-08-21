@@ -17,3 +17,7 @@
   https://learn.javascript.ru/fetch
 
 - useEffect - https://ru.reactjs.org/docs/hooks-effect.html
+
+- promises - https://learn.javascript.ru/promise-basics  
+  цепочки - https://learn.javascript.ru/promise-chaining
+  ES7 - https://learn.javascript.ru/async-await
