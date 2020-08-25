@@ -3,8 +3,10 @@ import { Input } from './Components/Input'
 import { getUsers, updateData, deleteData, sendData } from './server/requests'
 import { User } from './Components/User'
 
-export const App = () => {
+export const App = (props) => {
 	const [users, setUsers] = useState([])
+
+	const todos = [{ text: 'text', id: 0, checked: false }]
 
 	useEffect(() => {
 		getUsers().then((users) => setUsers(users))
@@ -12,7 +14,8 @@ export const App = () => {
 
 	const handleAdd = async (text) => {
 		const newUser = await sendData(text)
-		setUsers([...users, newUser])
+		const newUsersArray = [...users, newUser]
+		setUsers(newUsersArray)
 	}
 
 	const handleUpdate = async (id, text) => {
