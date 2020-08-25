@@ -1,0 +1,24 @@
+{
+	"git.autofetch": true,
+	"files.autoSave": "onFocusChange",
+	"editor.tabSize": 2,
+	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[javascript]": {
+		"editor.formatOnSave": false
+	},
+	"[javascriptreact]": {
+		"editor.formatOnSave": false
+	},
+	"[typescript]": {
+		"editor.formatOnSave": false
+	},
+	"[typescriptreact]": {
+		"editor.formatOnSave": false
+	},
+	"eslint.packageManager": "yarn",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	}
+}
