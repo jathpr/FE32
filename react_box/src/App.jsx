@@ -1,44 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import { Input } from './Components/Input'
-import { getUsers, updateData, deleteData, sendData } from './server/requests'
-import { User } from './Components/User'
+import React from 'react'
+import { NavLink, Switch, Route, useHistory } from 'react-router-dom'
+import { About, East, Home } from './Pages'
+
+const text = 'hello'
 
 export const App = (props) => {
-	const [users, setUsers] = useState([])
-
-	const todos = [{ text: 'text', id: 0, checked: false }]
-
-	useEffect(() => {
-		getUsers().then((users) => setUsers(users))
-	}, [])
-
-	const handleAdd = async (text) => {
-		const newUser = await sendData(text)
-		const newUsersArray = [...users, newUser]
-		setUsers(newUsersArray)
-	}
-
-	const handleUpdate = async (id, text) => {
-		await updateData(id, text)
-		getUsers().then((users) => setUsers(users))
-	}
-
-	const handleDelete = async (id) => {
-		await deleteData(id)
-		getUsers().then((users) => setUsers(users))
-	}
+	const histoty = useHistory()
 
 	return (
 		<>
-			<Input setData={handleAdd} />
-			{users.map((user) => (
-				<User
-					key={user.id}
-					name={user.name}
-					updateUser={(name) => handleUpdate(user.id, name)}
-					deleteUser={() => handleDelete(user.id)}
-				/>
-			))}
+			<NavLink to='/'>Home</NavLink>
+			<NavLink to='/about'>About</NavLink>
+			<Switch>
+				<Route path='/about'>
+					<About />
+				</Route>
+				<Route path='/east' render={() => <East data={text} />} />
+				<Route path='/' component={Home} />
+			</Switch>
+			<button
+				onClick={() => {
+					histoty.push('/east')
+				}}>
+				East
+			</button>
 		</>
 	)
 }
