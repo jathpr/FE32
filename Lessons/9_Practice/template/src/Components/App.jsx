@@ -1,9 +1,9 @@
 import React from 'react'
-import { Home, Login } from '../Pages'
+import { Home } from '../Pages'
 
 export const App = () => (
 	<div>
-		<Login />
+		App
 		<Home />
 	</div>
 )
