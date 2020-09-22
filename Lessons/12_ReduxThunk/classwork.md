@@ -17,22 +17,21 @@ export const store = createStore(todos, composeWithDevTools(applyMiddleware(thun
 ### Connect store to FC
 
 ```
-import { SecondComponent } from './Second';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { addTodo, getTodos } from '../../store/todosActionCreators'
+import { TodoComponent } from './TodoComponent'
 
-const mapStateToProps = (state) => {
-  return {
-    counter: state.counter.counter,
-  };
-};
+const mapStateToProps = (state) => ({
+	todos: state.list,
+})
 
-const mapDispatchToProps = (dispatch) => ({
-  increment: () => {
-    dispatch({ type: 'INCREMENT' });
-  },
-});
+const actionCreators = {
+	addTodo,
+	getTodos,
+}
 
-export const Second = connect(mapStateToProps, mapDispatchToProps)(SecondComponent);
+export const Todo = connect(mapStateToProps, actionCreators)(TodoComponent)
+
 ```
 
 ### Instructions
