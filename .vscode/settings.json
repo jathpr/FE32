@@ -1,4 +1,4 @@
 {
-  // "eslint.workingDirectories": ["./react_box"]
-  "eslint.workingDirectories": ["./galery"]
+  "eslint.workingDirectories": ["./react_box"]
+  // "eslint.workingDirectories": ["./galery"]
 }
