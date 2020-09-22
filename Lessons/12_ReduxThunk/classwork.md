@@ -1,6 +1,6 @@
 ### Dependencies
 
-`yarn add thunk`
+`yarn add redux-thunk`
 
 ### Store
 
@@ -33,5 +33,3 @@ const actionCreators = {
 export const Todo = connect(mapStateToProps, actionCreators)(TodoComponent)
 
 ```
-
-### Instructions
