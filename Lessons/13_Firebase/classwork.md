@@ -1,6 +1,7 @@
 ### install
 
-yarn global add firebase-tools
+yarn global add firebase-tools  
+firebase login
 
 ### use
 
@@ -10,3 +11,7 @@ yarn global add firebase-tools
   spa - yes  
   host - yes
 - firebase deploy
+
+### server
+
+http://jsonplaceholder.typicode.com/
